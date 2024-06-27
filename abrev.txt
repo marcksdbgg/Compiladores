@@ -1,0 +1,82 @@
+D ::= Bk D
+D ::= EOF
+
+Bk ::= T
+Bk ::= SP
+Bk ::= NL
+Bk ::= CB
+
+CB ::= BEGIN ToL
+CB ::= HEADER Header
+CB ::= BOLD StyledBk
+CB ::= ITALIC StyledBk
+CB ::= CLINK Link
+CB ::= CCODE Code
+
+ToL ::= BOP D
+
+D ::= TK BCL Table
+D ::= LK BCL List
+
+Table ::= TS RL END BOP TK BCL
+TS ::= BOP CS BCL
+CS ::= DIGITS
+
+RL ::= ER RL
+RL ::= ''
+
+ER ::= Con ET
+
+ET ::= C& Con ET
+ET ::= NL
+
+List ::= IL END BOP LK BCL
+
+IL ::= I IL
+IL ::= ''
+
+I ::= CMDI Con NL
+
+Header ::= SQUARE_OPEN T SQUARE_CLOSE BOP Con BCL
+
+StyledBk ::= BOP InnerContent BCL
+
+Link ::= SQUARE_OPEN T SQUARE_CLOSE BOP T BCL
+Code ::= SQUARE_OPEN T SQUARE_CLOSE BOP T BCL
+
+InnerContent ::= CB InnerContent
+InnerContent ::= T InnerContent
+InnerContent ::= SP InnerContent
+InnerContent ::= NL InnerContent
+InnerContent ::= ''
+
+Con ::= CB
+Con ::= T
+Con ::= SP
+Con ::= NL
+
+BEGIN ::= \begin
+END::= \end
+
+HEADER ::= \header
+BOLD ::= \textbf
+ITALIC ::= \textit
+LINK ::= \link
+CODE ::= \code
+CMDI ::= \item
+
+TK ::= table
+LK ::= itemize
+
+BOP ::= {
+BCL ::= }
+SQUARE_OPEN ::= [
+SQUARE_CLOSE ::= ]
+C& ::= &
+E/N ::= \n
+SP ::= ' '
+NL ::= ~
+DIGITS ::= 00
+T ::= aa
+
+EOF ::= \0

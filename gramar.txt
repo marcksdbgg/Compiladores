@@ -1,0 +1,82 @@
+Document ::= Block Document
+Document ::= EOF
+
+Block ::= Text
+Block ::= SPACE
+Block ::= NEWLINE
+Block ::= CommandBlock
+
+CommandBlock ::= BEGIN TableOrList
+CommandBlock ::= HEADER Header
+CommandBlock ::= BOLD StyledBlock
+CommandBlock ::= ITALIC StyledBlock
+CommandBlock ::= LINK Link
+CommandBlock ::= CODE Code
+
+TableOrList ::= BRACE_OPEN Discriminator
+
+Discriminator ::= TABLE_KEYWORD BRACE_CLOSE Table
+Discriminator ::= LIST_KEYWORD BRACE_CLOSE List
+
+Table ::= TabularSpecifier RowList END BRACE_OPEN TABLE_KEYWORD BRACE_CLOSE
+TabularSpecifier ::= BRACE_OPEN ColumnSpecifier BRACE_CLOSE
+ColumnSpecifier ::= DIGITS
+
+RowList ::= ElementRow RowList
+RowList ::= ''
+
+ElementRow ::= Content ElementTail
+
+ElementTail ::= CELL_SEPARATOR Content ElementTail
+ElementTail ::= NEWLINE
+
+List ::= ItemList END BRACE_OPEN LIST_KEYWORD BRACE_CLOSE
+
+ItemList ::= Item ItemList
+ItemList ::= ''
+
+Item ::= CMD_ITEM SPACE Content NEWLINE
+
+Header ::= SQUARE_OPEN Text SQUARE_CLOSE BRACE_OPEN Content BRACE_CLOSE
+
+StyledBlock ::= BRACE_OPEN InnerContent BRACE_CLOSE
+
+Link ::= SQUARE_OPEN Text SQUARE_CLOSE BRACE_OPEN Text BRACE_CLOSE
+Code ::= SQUARE_OPEN Text SQUARE_CLOSE BRACE_OPEN Text BRACE_CLOSE
+
+InnerContent ::= CommandBlock InnerContent
+InnerContent ::= Text InnerContent
+InnerContent ::= SPACE InnerContent
+InnerContent ::= NEWLINE InnerContent
+InnerContent ::= ''
+
+BEGIN ::= \begin
+END ::= \end
+
+Content ::= CommandBlock
+Content ::= Text
+Content ::= SPACE
+Content ::= NEWLINE
+
+HEADER ::= \header
+BOLD ::= \textbf
+ITALIC ::= \textit
+LINK ::= \link
+CODE ::= \code
+CMD_ITEM ::= \item
+
+TABLE_KEYWORD ::= table
+LIST_KEYWORD ::= itemize
+
+BRACE_OPEN ::= {
+BRACE_CLOSE ::= }
+SQUARE_OPEN ::= [
+SQUARE_CLOSE ::= ]
+CELL_SEPARATOR ::= &
+SPACE ::= ' '
+NEWLINE ::= ~
+DIGITS ::= 00
+Text ::= aa
+
+EOF ::= \0
+

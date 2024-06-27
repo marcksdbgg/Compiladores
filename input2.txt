@@ -1,0 +1,23 @@
+\header[1]{\textbf{Ejemplo de documento}}~
+Este es un ejemplo de \textbf{documento} que se puede utilizar para probar el correcto funcionamiento del programa.~
+Este es un texto con estilo \textbf{negrita} y \textit{cursiva}.~
+Este es un \textbf{texto con \textit{estilo} anidado}.~
+\header[2]{\textbf{Tablas y listas}}~
+A continuacion se muestra un ejemplo de tabla y una lista de frutas.~
+\begin{table}{2}
+manzana&\textbf{naranja}~
+pera&uva~
+tomate&higo~
+limon&platano~
+papa&zanahoria~
+\end{table}~
+\textbf{Lista de frutas}~
+\begin{itemize}
+\item manzana~
+\item \textbf{naranja}~
+\item pera~
+\item uva~
+\end{itemize}~
+\header[3]{\textbf{Enlaces y codigo}}~
+A continuacion se muestra un ejemplo de enlace y de una imagen.~
+\link[https:www.google.com]{Google}~

@@ -1,0 +1,16 @@
+documento 
+Este es un ejemplo de documento que se puede utilizar para probar el correcto funcionamiento del programa.
+Este es un texto con estilo negrita y cursiva.
+Este es un estiloanidado.
+listas 
+A continuacion se muestra un ejemplo de tabla y una lista de frutas.
+
+|  |  |  |  |  | manzananaranja
+perauva
+
+frutas
+* 
+ de Lista | 
+| --- | --- | --- | --- | --- | --- |
+
+y Tablas2  con textode Ejemplo1
